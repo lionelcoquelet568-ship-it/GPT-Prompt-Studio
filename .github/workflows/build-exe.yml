@@ -1,14 +1,11 @@
-name: Build Windows EXE
-
-on:
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
+steps:
     - uses: actions/checkout@v4
+
+    - name: Cache npm
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: npm-cache
 
     - name: Install Node
       uses: actions/setup-node@v4
